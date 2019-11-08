@@ -32,7 +32,10 @@ int checkAnt(float voltage, int& sensorState, int voltageThreshold){
 void setup() 
 {
   Serial.begin(9600);
-  Serial.println("Starting Program...");
+  Serial.println("Starting Program:");
+  Serial.println("3");
+  Serial.println("2");
+  Serial.println("1");
 }
 
 void loop() 
