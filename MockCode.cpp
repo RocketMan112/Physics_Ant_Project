@@ -33,6 +33,10 @@ void setup()
 {
   Serial.begin(9600);
   Serial.println("Starting Program...");
+  Serial.print("3,");
+  Serial.print("2,");
+  Serial.println("1");
+  Serial.println("Go!");
 }
 
 void loop() 
