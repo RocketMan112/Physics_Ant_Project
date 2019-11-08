@@ -52,7 +52,8 @@ void loop()
   numOfAntsB += checkAnt(sensorBVoltage, sensorStateB, voltageThresholdB);
 
   if(sensorAVoltage < voltageThresholdA || sensorBVoltage < voltageThresholdB){
-    Serial.println("Sensor A Voltage: " + String(sensorAVoltage) + ", Sensor B: " + String(sensorBVoltage) + " A Count: " + String(numOfAntsA) +" B Count: " + String(numOfAntsB));
+    //Serial.println("Sensor A Voltage: " + String(sensorAVoltage) + ", Sensor B: " + String(sensorBVoltage) + " A Count: " + String(numOfAntsA) +" B Count: " + String(numOfAntsB));
+    Serial.println("A Count: " + String(numOfAntsA) +" B Count: " + String(numOfAntsB));
   }
 
   delay(50);
