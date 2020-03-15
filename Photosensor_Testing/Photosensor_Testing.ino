@@ -4,11 +4,13 @@ const int sensorB = A1;
 const float VCC = 5.02; // Measured voltage of Ardunio 5V line
 const float R_DIV = 4660.0; // Measured resistance of 3.3k resistor
 
-float sensorAVoltage;
-float sensorBVoltage;
+float sensorAVoltage = 4.5;
+float sensorBVoltage = 4.5;
 
 int numOfAntsA, sensorStateA = 0;
 int numOfAntsB = 0, sensorStateB = 0;
+
+int currentRun = 0;
 
 // Set this to the minimum resistance require to turn an LED on:
 const float voltageThresholdA = 4.10;
@@ -44,12 +46,23 @@ void setup()
 
 void loop() 
 {
-  delay(50);
-  sensorAVoltage = analogRead(sensorA)* VCC / 1023.0;
-  sensorAVoltage = analogRead(sensorA)* VCC / 1023.0;
-  delay(50);
-  sensorBVoltage = analogRead(sensorB)* VCC / 1023.0;
-  sensorBVoltage = analogRead(sensorB)* VCC / 1023.0;
+  if(currentRun > 4){
+    delay(50);
+    sensorAVoltage = analogRead(sensorA)* VCC / 1023.0;
+    sensorAVoltage = analogRead(sensorA)* VCC / 1023.0;
+    delay(50);
+    sensorBVoltage = analogRead(sensorB)* VCC / 1023.0;
+    sensorBVoltage = analogRead(sensorB)* VCC / 1023.0;
+  }
+  else{
+    delay(50);
+    analogRead(sensorA)* VCC / 1023.0;
+    analogRead(sensorA)* VCC / 1023.0;
+    delay(50);
+    analogRead(sensorB)* VCC / 1023.0;
+    analogRead(sensorB)* VCC / 1023.0;
+   }
+  
 
 
   if(voltageThresholdA > sensorAVoltage && sensorStateA == 0){
@@ -72,7 +85,7 @@ void loop()
     }
   }
 
-  
+  currentRun++;  
   Serial.println("Sensor A Voltage: " + String(sensorAVoltage) + ", Sensor B: " + String(sensorBVoltage) + " A Count: " + String(numOfAntsA) +" B Count: " + String(numOfAntsB));
 //  if(sensorAVoltage < voltageThresholdA || sensorBVoltage < voltageThresholdB){
 //    Serial.println("A Count: " + String(numOfAntsA) +" B Count: " + String(numOfAntsB));
